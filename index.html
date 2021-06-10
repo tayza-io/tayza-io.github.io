@@ -121,13 +121,13 @@
               <p>
                 <samp>
                   status: 200 OK <br/>
-                  &nbsp;&nbsp;body: { <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;authData: { <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userID: <<var>Your User ID</var>>, <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;companyName: <<var>Your Company Name</var>>, <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apiKey: <<var>Your API Key</var>> <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;}, <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;message: 'Valid user' <br/>
+                  body: { <br/>
+                  &nbsp;&nbsp;message: 'Valid user' <br/>
+                  &nbsp;&nbsp;authData: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;userID: <<var>Your User ID</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;companyName: <<var>Your Company Name</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;apiKey: <<var>Your API Key</var>> <br/>
+                  &nbsp;&nbsp;}, <br/>
                   }
                 </samp>
               </p>
@@ -152,10 +152,86 @@
               </p>            </div>
             <hr/>
             <div class="card-body">
+              <h6 class="card-title">Example</h6>
               <p class="card-text">
                 <code>
-                code example for request to https://deliver.tayza.io
+                  POST https://deliver.tayza.io/deliveries<br/>
+                  body: {<br/>
+                  &nbsp;&nbsp;delivery: {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;recipient: {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: <<var>recipient name</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;phone: <<var>phone number?</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;address: {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit: <<var>unit?</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number: <<var>street number</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;street: <<var>street name</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;city: <<var>city</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;province: <<var>ON</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country: <<var>Canada</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>postal code</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;options: {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: <<var>number of packages</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deliveryNotes: <<var>notes?</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;giftSender: <<var>gift sender?</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pickupIndex: <<var>pickup address # on account || null for default address</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                  &nbsp;&nbsp;}<br/>
+                  }
                 </code>
+              </p>
+              <p>
+                <samp>
+                  status: 201 Created <br/>
+                  body: { <br/>
+                  &nbsp;&nbsp;message: 'Delivery successfully created' <br/>
+                  &nbsp;&nbsp;data: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;_id:<<var>Delivery ID</var>> <br/>
+                    
+                  &nbsp;&nbsp;&nbsp;&nbsp;client: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_id:<<var>Client ID</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;companyName:<<var>Client company name</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address: { <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit: <<var>unit?</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number: <<var>street number</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;street: <<var>street name</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;city: <<var>city</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;province: <<var>ON</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country: <<var>Canada</var>> <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>postal code</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;}, <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;recipient: {<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: <<var>recipient name</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;phone: <<var>phone number?</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;address: {<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit: <<var>unit?</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number: <<var>street number</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;street: <<var>street name</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;city: <<var>city</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;province: <<var>ON</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;country: <<var>Canada</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>postal code</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;options: {<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: <<var>number of packages</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deliveryNotes: <<var>notes?</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;giftSender: <<var>gift sender?</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pickupIndex: <<var>pickup address # on account || null for default address</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;}, <br/>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;status: { <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;submitted:  <<var>ISO Date</var>> <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;active:     <<var>ISO Date or undefined</var>> <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inProgress: <<var>ISO Date or undefined</var>> <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;completed:  <<var>ISO Date or undefined</var>> <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed:     <<var>ISO Date or undefined</var>> <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                  &nbsp;&nbsp;}, <br/>
+                  }
+                </samp>
               </p>
             </div>
           </div>  
