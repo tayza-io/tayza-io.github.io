@@ -80,42 +80,56 @@
                 Tayza's delivery service is currently closed-registration only. If you aren't a Tayza user (but would like to be),
                 get in contact with sales and we will be able to create an account for you. 
               </p>
-              <h6 class="card-title">Signing your Requests</h4>
+              <h6 class="card-title">Signing your Requests</h6>
                 <p class="card-text">
                   In order to use your API key to authenticate requests, you'll need to set an additional
-                  request header for requests sent to the API endpoint. if this is not done, all requests will return <code>401: unauthorized</code> codes
+                  request header for requests sent to the API endpoint. if this is not done, all requests will return <code>401: Unauthorized</code> codes
                   in their response. the following header needs to be added:
                 </p>
-                  <p class="card-text">
-                    <code>
-                    X-API-Key: {<var>Your API Key</var>}
-                    </code>
-                  </p>
+                <p class="card-text">
+                  <code>
+                  X-API-Key: <<var>Your API Key</var>>
+                  </code>
+                </p>
+              <h6 class="card-title">HTTPS/SSL</h6>
+                When using the Deliver API in production, your are required to send requests over HTTPS, and failure to do so
+                will be considered a breach of our terms of service. 
+
             </div>
           </div>            
           <div class="card m-2 mb-0 mt-4 p-2" id="check-api-key">
             <div class="card-body">
               <h5 class="card-title">Checking your API Key</h5>
               <p class="card-text">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
-                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim 
-                ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
-                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque 
-                porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
-                adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et 
-                dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-                ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
-                voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-                eum fugiat quo voluptas nulla pariatur?
-              </p>            </div>
+                Before proceeding into using the Deliver API, it is important to check that your API key is valid and associated 
+                with your Tayza Account. to check if your API key is valid, use the following endpoint, with the <code>X-API-Key</code>    
+                header attached to your request.
+              </p>
+              <p>
+                A valid key will produce a <code>200: OK</code> status code return further auth data, including account ID and Company Name
+                If the key is invalid, you will receive either a <code>401: Unauthorized</code> or <code>403: Forbidden</code> response.
+              </p>
+            </div>
             <hr/>
             <div class="card-body">
+              <h6 class="card-title">Example: Valid Key</h6>
               <p class="card-text">
                 <code>
-                code example for request to https://deliver.tayza.io
+                GET https://deliver.tayza.io/me
                 </code>
+              </p>
+              <p>
+                <samp>
+                  status: 200 OK <br/>
+                  &nbsp;&nbsp;body: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;authData: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userID: <<var>Your User ID</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;companyName: <<var>Your Company Name</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apiKey: <<var>Your API Key</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;}, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;message: 'Valid user' <br/>
+                  }
+                </samp>
               </p>
             </div>
           </div>  
