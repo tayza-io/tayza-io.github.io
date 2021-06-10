@@ -23,33 +23,43 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                  Home
+                <a href="#getting-started" class="nav-link active" aria-current="page">
+                  Getting Started
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                  Dashboard
+                <a href="#check-api-key" class="nav-link text-white">
+                  Check API Key
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                  Orders
+                <a href="#create-delivery" class="nav-link text-white">
+                  Create A Delivery
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                  Products
+                <a href="#get-delivery-id" class="nav-link text-white">
+                  Get Delivery by ID
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                  Customers
+                <a href="#get-current-deliveries" class="nav-link text-white">
+                  Get Current Deliveries
+                </a>
+              </li>              
+              <li>
+                <a href="#get-historical-deliveries" class="nav-link text-white">
+                  Get Historical Deliveries
+                </a>
+              </li>
+              <li>
+                <a href="#get-labels" class="nav-link text-white">
+                  Get Shipping Labels
+                </a>
+              </li>
+              <li>
+                <a href="#get-zones" class="nav-link text-white">
+                  Get Delivery Zones
                 </a>
               </li>
             </ul>
@@ -58,7 +68,32 @@
           
         <div class="container-lg">
           
-          <div class="card m-2 mb-0 mt-4 p-2">
+          <div class="card m-2 mb-0 mt-4 p-2" id="getting-started">
+            <div class="card-body">
+              <h5 class="card-title">Getting Started with the Tayza Deliver API</h5>
+              <h6 class="card-title">Getting your API Key</h4>
+              <p class="card-text">
+                To use the Tayza Deliver API, you first need to get your hands on an API key. You can find your API key on your Tayza client portal, under settings.
+                without an API key, the majority of the API's functions are inaccessible. 
+              </p>
+              <p class="card-text">
+                Tayza's delivery service is currently closed-registration only. If you aren't a Tayza user (but would like to be),
+                get in contact with sales and we will be able to create an account for you. 
+              </p>
+              <h6 class="card-title">Signing your Requests</h4>
+                <p class="card-text">
+                  In order to use your API key to authenticate requests, you'll need to set an additional
+                  request header for requests sent to the API endpoint. if this is not done, all requests will return <code>401: unauthorized</code> codes
+                  in their response. the following header needs to be added:
+                </p>
+                  <p class="card-text">
+                    <code>
+                    X-API-Key: {<var>Your API Key</var>}
+                    </code>
+                  </p>
+            </div>
+          </div>            
+          <div class="card m-2 mb-0 mt-4 p-2" id="check-api-key">
             <div class="card-body">
               <h5 class="card-title">OPERATION NAME</h5>
               <p class="card-text">Description of operation and params required</p>
@@ -71,8 +106,91 @@
                 </code>
               </p>
             </div>
-          </div>            
-            
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="create-delivery">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-delivery-id">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-current-deliveries">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-historical-deliveries">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-labels">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-zones">
+            <div class="card-body">
+              <h5 class="card-title">OPERATION NAME</h5>
+              <p class="card-text">Description of operation and params required</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                code example for request to https://deliver.tayza.io
+                </code>
+              </p>
+            </div>
+          </div>  
         </div>
       </main>
         
