@@ -334,8 +334,22 @@
             <div class="card-body">
               <p class="card-text">
                 <code>
-                code example for request to https://deliver.tayza.io
+                GET https://deliver.tayza.io/deliveries/current
                 </code>
+              </p>
+              <p>
+                <samp>
+                  status: 200 OK <br/>
+                  body: { <br/>
+                  &nbsp;&nbsp;message: 'Current deliveries successfully fetched' <br/>
+                  &nbsp;&nbsp;data: [<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{DeliveryObject_1}, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{DeliveryObject_2}, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{DeliveryObject_n} <br/>
+                  &nbsp;&nbsp;] <br/>
+                  }
+                </samp>
               </p>
             </div>
           </div>  
