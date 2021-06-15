@@ -238,7 +238,7 @@
             <div class="card-body">
               <h5 class="card-title">Getting a Delivery by ID</h5>
               <p class="card-text">
-                to get a specific delivery by its ID, send a <code>GET</code> request to the deliveries
+                To get a specific delivery by its ID, send a <code>GET</code> request to the deliveries
                 endpoint, with the delivery ID appended to the end. The response body will contain the fetched delivery if found
                 or will return a <code>404 Not Found</code> response if no such delivery exists.
               </p>            
@@ -340,7 +340,7 @@
               <h5 class="card-title">Getting a Paginated List of Deliveries</h5>
               <p class="card-text">
                 Fetches a list of delivery objects of length <code>limit</code> if defined, otherwise will fetch 
-                a default length of 20 items. The deliveries are sorted in reverse chronological order (newest first)
+                a default length of 20 items. The deliveries are sorted in reverse chronological order (newest first).
               </p>            
               <p>
                 The <code>page</code> parameter allows for skipping ahead <code>(page*limit)</code> entries, and allows
@@ -383,12 +383,12 @@
             <div class="card-body">
               <h5 class="card-title">Deleting a Delivery by ID</h5>
               <p class="card-text">
-                to delete a specific delivery by its ID, send a <code>DELETE</code> request to the deliveries
+                To delete a specific delivery by its ID, send a <code>DELETE</code> request to the deliveries
                 endpoint, with the delivery ID appended to the end. The response body will contain the deleted delivery if found
                 or will return a <code>404 Not Found</code> response if no such delivery exists.
               </p>
               <p>
-                Deliveries cannot be deleted if they have been dispatched(if most recent status is <code>inProgress</code>,
+                Deliveries cannot be deleted if they have been dispatched (if its most recent status is <code>inProgress</code>,
                 <code>completed</code>, or <code>failed</code>), and attempting to delete a delivery of this class will 
                 yield a <code>400 Bad Request</code> response.
               </p>           
@@ -456,8 +456,8 @@
             <div class="card-body">
               <h5 class="card-title">Generating Delivery Labels</h5>
               <p class="card-text">
-                To get labels for a list of deliveries, you need to submit a comma-separated string of delivery ids 
-                for the <code>ids</code> query parameter of your request. You can optionally include a parameter
+                To get labels for a list of deliveries, you need to submit a comma-separated string of delivery IDs 
+                for the <code>IDs</code> query parameter of your request. You can optionally include a parameter
                 for <code>thermal</code>, which, if true, will generate labels optimized for 4x6 thermal label printers.
                 Otherwise, the labels will be generated four-a-page for 8.5x11 letter paper.
               </p>
@@ -494,7 +494,7 @@
               <h5 class="card-title">Getting a List of Delivery Zones</h5>
               <p class="card-text">
                 Returns a list of <code>zone</code> objects, which contain the zone ID, title, price to fulfill, and a list of FSAs
-                (The first three characters in a Canadian Postal Code) serviced by that zone. This list can be used to estimate price
+                (the first three characters in a Canadian Postal Code) serviced by that zone. This list can be used to estimate price
                 by location and paints a picture of the total area serviced by Tayza.
               </p>
             </div>
