@@ -67,6 +67,11 @@
                   Get Delivery Zones
                 </a>
               </li>
+              <li>
+                <a href="#get-rates" class="nav-link text-white">
+                  Get Rates by Postal Code
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -542,6 +547,47 @@
               </p>
             </div>
           </div> 
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-rates">
+            <div class="card-body">
+              <h5 class="card-title">Getting Rates by Postal Code</h5>
+              <p class="card-text">
+                Returns a <code>data</code> object which contains a message and a data object. The inner <code>data</code> object contains the zone the postal code falls under, the delivery rate, and the postal code provided.
+              </p>
+              <p>
+                A valid postal code will produce a <code>200: OK</code> status code and return further postal code data, including zone and delivery rate.
+                If the postal code is invalid or not found, you will receive either a <code>400: Bad request</code> or <code>404: Not found</code> response respectively.
+              </p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <h6 class="card-title">Example: Valid Postal Code</h6>
+              <p class="card-text">
+                <code>
+                GET https://deliver.tayza.io/zones/rates/&lt;<var>postalCode</var>&gt;
+                </code>
+              </p>
+              <p>
+                <samp>
+                  status: 200 OK <br/>
+                  body: { <br/>
+                  &nbsp;&nbsp;message: 'Valid postal code', <br/>
+                  &nbsp;&nbsp;data: { <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;zone: <<var>Name of zone_1</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;price: <<var>Delivery rate</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>Postal code</var>> <br/>
+                  &nbsp;&nbsp;} <br/>
+                  }
+                </samp>
+              </p>
+              <hr/>
+               <p>
+                The postal code variable will be formatted by a service called within the route so capitalization and spacing are irrelevant. If the postal code is invalid (more below) or is not currently covered by a Tayza zone the <code>data</code> object will only contain a message describing the issue. <br/> <br/>
+                A valid postal code will include: <br/>
+                - Characters formated A1A1A1 after formatting<br/>
+                - exactly 6 characters for exact matching, or 4-6 characters ending with the <code>*</code> symbol for partial matching
+              </p>
+            </div>
+          </div>
           <br/>
           <div class="d-flex justify-content-around" id="get-zones">
             <img src="logo-full.png" width="50%"/>
