@@ -549,13 +549,19 @@
           </div> 
           <div class="card m-2 mb-0 mt-4 p-2" id="get-rates">
             <div class="card-body">
-              <h5 class="card-title">Getting Rates by Postal Code</h5>
+              <h5 class="card-title">Getting Estimated Shipping Rates for a Package</h5>
               <p class="card-text">
-                Returns a <code>data</code> object which contains a message and a data object. The inner <code>data</code> object contains the zone the postal code falls under, the delivery rate, and the postal code provided.
+                Returns a <code>data</code> object which contains a message and a data object. 
+                The inner <code>data</code> object contains the zone the delivery falls under, 
+                the package type applied to the delivery, the delivery rate, and the postal code provided.
               </p>
               <p>
-                A valid postal code will produce a <code>200: OK</code> status code and return further postal code data, including zone and delivery rate.
-                If the postal code is invalid or not found, you will receive either a <code>400: Bad request</code> or <code>404: Not found</code> response respectively.
+                A valid postal code will produce a <code>200: OK</code> status code and return 
+                relevant shipping data. If the postal code is invalid or out of range for the delivery service
+                you will receive either a <code>400: Bad request</code> or <code>404: Not found</code> 
+                response respectively with the error <code>message</code> included in the response. This is also true
+                If the package dimensions are invalid/incomplete or outside of any package category, and will 
+                include error messages reflecting as such. 
               </p>
               <p>
                 The postal code variable will be formatted by a service called within the route so capitalization and spacing are irrelevant. If the postal code is invalid (more below) or is not currently covered by a Tayza zone the <code>data</code> object will only contain a message describing the issue. <br/> <br/>
@@ -569,18 +575,28 @@
               <h6 class="card-title">Example: Valid Postal Code</h6>
               <p class="card-text">
                 <code>
-                GET https://deliver.tayza.io/zones/rates/&lt;<var>postalCode</var>&gt;
+                  POST https://deliver.tayza.io/rate<br/>
+                  body: {<br/>
+                  &nbsp;&nbsp;postalCode: <<var>canadian postal code [Format A1A1A1]</var>> <br/>
+                  &nbsp;&nbsp;dimensions: {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; length: <<var>Length [Metres]</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; width: <<var>Width [Metres]</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; height: <<var>Height [Metres]</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; weight: <<var>Weight [Kilograms]?</var>> <br/>
+                  &nbsp;&nbsp;}<br/>
+                  }
                 </code>
               </p>
               <p>
                 <samp>
                   status: 200 OK <br/>
                   body: { <br/>
-                  &nbsp;&nbsp;message: 'Valid postal code', <br/>
+                  &nbsp;&nbsp;message: 'Valid delivery', <br/>
                   &nbsp;&nbsp;data: { <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;zone: <<var>Name of zone_1</var>>, <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;price: <<var>Delivery rate</var>>, <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>Postal code</var>> <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;zone: <<var>Name of zone</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;packageType: <<var>Package type name</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;postalCode: <<var>Postal code</var>>, <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;price: <<var>Delivery rate</var>> <br/>
                   &nbsp;&nbsp;} <br/>
                   }
                 </samp>
