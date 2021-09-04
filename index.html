@@ -58,8 +58,13 @@
                 </a>
               </li>
               <li>
-                <a href="#get-labels" class="nav-link text-white">
-                  Get Shipping Labels
+                <a href="#get-labels-pdf" class="nav-link text-white">
+                  Get Shipping Labels (PDF)
+                </a>
+              </li>
+              <li>
+                <a href="#get-labels-zpl" class="nav-link text-white">
+                  Get Shipping Labels (ZPL)
                 </a>
               </li>
               <li>
@@ -457,9 +462,9 @@
               </p>
             </div>
           </div>  
-          <div class="card m-2 mb-0 mt-4 p-2" id="get-labels">
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-labels-pdf">
             <div class="card-body">
-              <h5 class="card-title">Generating Delivery Labels</h5>
+              <h5 class="card-title">Generating Delivery Labels (PDF)</h5>
               <p class="card-text">
                 To get labels for a list of deliveries, you need to submit a comma-separated string of delivery IDs 
                 for the <code>IDs</code> query parameter of your request. You can optionally include a parameter
@@ -494,6 +499,41 @@
               
             </div>
           </div> 
+          <div class="card m-2 mb-0 mt-4 p-2" id="get-labels-zpl">
+            <div class="card-body">
+              <h5 class="card-title">Generating Delivery Labels (ZPL)</h5>
+              <p class="card-text">
+                To get labels for a list of deliveries, you need to submit a comma-separated string of delivery IDs 
+                for the <code>IDs</code> query parameter of your request. The labels generated are optimized for 
+                4x6 thermal paper printers with 8 dots per millimeter (8dpmm).
+              </p>
+              <p>
+                The endpoint responds with an array with each element containing an array of strings. Each element in the data array
+                contains one or more strings corresponding to an individual label per package as defined by <code>delivery.quantity</code>.
+              </p>
+            </div>
+            <hr/>
+            <div class="card-body">
+              <p class="card-text">
+                <code>
+                  GET https://deliver.tayza.io/deliveries/labels/zpl?ids=<<var>id_1,id_2,id_3,...,id_n</var>>
+                </code>
+              </p>
+              <p>
+                <samp>
+                  status: 200 OK <br/>
+                  body: { <br/>
+                      &nbsp;&nbsp;data: [<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_1Pkg1, Delivery1Pkg2, ..., Delivery_1PkgN] <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_2Pkg1, ... <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_NPkg1, ..., Delivery_NPkgN] <br/>
+                      &nbsp;&nbsp;]<br/>
+                  } <br/>
+                </samp>
+              </p>
+            </div>
+          </div>
           <div class="card m-2 mb-0 mt-4 p-2" id="get-zones">
             <div class="card-body">
               <h5 class="card-title">Getting a List of Delivery Zones</h5>
