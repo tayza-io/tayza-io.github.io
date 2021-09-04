@@ -464,13 +464,12 @@
                 To get labels for a list of deliveries, you need to submit a comma-separated string of delivery IDs 
                 for the <code>IDs</code> query parameter of your request. You can optionally include a parameter
                 for <code>thermal</code>, which, if true, will generate labels optimized for 4x6 thermal label printers.
-                Otherwise, the labels will be generated four-a-page for 8.5x11 letter paper. A parameter for <code>zpl</code>
-                can be included which when true will return a string representing the ZPL label.
+                Otherwise, the labels will be generated four-a-page for 8.5x11 letter paper.
               </p>
               <p>
-                When ZPL is false, the endpoint responds with a <code>Blob</code> with content type equal to 
+                The endpoint responds with a <code>Blob</code> with content type equal to 
                 <code>application/pdf</code>. You will need to work with this <code>Blob</code> locally in order to 
-                convert it to a usable PDF file. 
+                convert it to a usable PDF file.
               </p>
               <p>
                 See also: <a 
@@ -483,7 +482,7 @@
             <div class="card-body">
               <p class="card-text">
                 <code>
-                  GET https://deliver.tayza.io/deliveries/labels?ids=<<var>id_1,id_2,id_3,...,id_n</var>>[&thermal=<<var>bool?</var>>][&zpl=<<var>bool?</var>>]
+                  GET https://deliver.tayza.io/deliveries/labels?ids=<<var>id_1,id_2,id_3,...,id_n</var>>[&thermal=<<var>bool?</var>>]
                 </code>
               </p>
               <p>
