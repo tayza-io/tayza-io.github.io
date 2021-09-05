@@ -367,7 +367,7 @@
             <div class="card-body">
               <p class="card-text">
                 <code>
-                  GET https://deliver.tayza.io/list/<<var>page</var>>/<<var>limit?</var>><br/>
+                  GET https://deliver.tayza.io/deliveries/list/<<var>page</var>>/<<var>limit?</var>><br/>
                 </code>
               </p>
               <p>
@@ -505,7 +505,8 @@
               <p class="card-text">
                 To get labels for a list of deliveries, you need to submit a comma-separated string of delivery IDs 
                 for the <code>IDs</code> query parameter of your request. The labels generated are optimized for 
-                4x6 thermal paper printers with 8 dots per millimeter (8dpmm).
+                4x6 thermal paper printers. A parameter for <code>dpmm</code> can be provided for the dpmm of your printer: 6, 8, 12 and 24 dpmm 
+                printers are supported. 8 dpmm is the default for the labels returned if no parameter is provided. 
               </p>
               <p>
                 The endpoint responds with an array with each element containing an array of strings. Each element in the data array
@@ -516,7 +517,7 @@
             <div class="card-body">
               <p class="card-text">
                 <code>
-                  GET https://deliver.tayza.io/deliveries/labels/zpl?ids=<<var>id_1,id_2,id_3,...,id_n</var>>
+                  GET https://deliver.tayza.io/deliveries/labels/zpl?ids=<<var>id_1,id_2,id_3,...,id_n</var>>[&dpmm=<<var>6||8||12||24?</var>>]
                 </code>
               </p>
               <p>
@@ -524,10 +525,10 @@
                   status: 200 OK <br/>
                   body: { <br/>
                       &nbsp;&nbsp;data: [<br/>
-                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_1Pkg1, Delivery1Pkg2, ..., Delivery_1PkgN] <br/>
-                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_2Pkg1, ... <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_1Pkg1, Delivery1Pkg2, ...] <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_2Pkg1, ...] <br/>
                       &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_NPkg1, ..., Delivery_NPkgN] <br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;[Delivery_NPkg1, ...] <br/>
                       &nbsp;&nbsp;]<br/>
                   } <br/>
                 </samp>
@@ -614,7 +615,7 @@
               <h6 class="card-title">Example: Valid Postal Code</h6>
               <p class="card-text">
                 <code>
-                  POST https://deliver.tayza.io/rate<br/>
+                  POST https://deliver.tayza.io/zones/rate<br/>
                   body: {<br/>
                   &nbsp;&nbsp;postalCode: <<var>canadian postal code [Format A1A1A1]</var>> <br/>
                   &nbsp;&nbsp;dimensions: {<br/>
