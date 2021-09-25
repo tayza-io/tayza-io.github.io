@@ -158,7 +158,8 @@
               </p>
               <p>
                 When sending the <code>POST</code> request, send a composed <code>delivery</code> 
-                object consisting of the three sub-objects mentioned above.
+                object consisting of the three sub-objects mentioned above. For the <code>address</code> object, the fields for unit, number, and street
+                can be replaced with a single <code>address.line1</code> field. All fields for delivery creation accept strings, except for <code>pickupIndex</code> and <code>giftSender</code>.
                </p>            
             </div>
             <hr/>
